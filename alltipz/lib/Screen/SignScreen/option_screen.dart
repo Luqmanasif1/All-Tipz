@@ -19,12 +19,12 @@ class Option extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: SizeConfig.screenHeight * 0.07),
-              Center(
+              SizedBox(height: SizeConfig.screenHeight * 0.04),
+              Container(
+                width: SizeConfig.screenWidth,
                 child: Image.asset(
                   homescreen,
-                  fit: BoxFit.fill,
-                  width: SizeConfig.screenWidth,
+                  fit: BoxFit.contain,
                 ),
               ),
               Center(
@@ -65,9 +65,7 @@ class Option extends StatelessWidget {
                       "Sign Up", 0xFFFFFFFF, FontWeight.w600, 20, 25, 0, 0),
                 ),
               ),
-              SizedBox(
-                height: 50,
-              ),
+              SizedBox(height: 40),
             ],
           ),
         ),

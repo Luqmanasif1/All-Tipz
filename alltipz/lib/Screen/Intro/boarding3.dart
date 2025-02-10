@@ -18,15 +18,20 @@ class BoardingThree extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.10),
-                child: const Align(
+                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.08),
+                child: Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Skip    ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Option.routename);
+                    },
+                    child: const Text(
+                      "Skip    ",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -52,8 +57,8 @@ class BoardingThree extends StatelessWidget {
                     topRight: Radius.circular(40.0),
                   ),
                 ),
-                width: SizeConfig.screenHeight,
-                height: SizeConfig.screenWidth,
+                width: SizeConfig.screenWidth * 100,
+                height: SizeConfig.screenHeight / 3,
                 child: Column(
                   children: [
                     _myTextWidget("Tip Anytime", 0xFF000000, FontWeight.w700,

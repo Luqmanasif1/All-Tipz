@@ -1,18 +1,19 @@
+import 'package:alltipz/Screen/Signup/welcomr.dart';
 import 'package:flutter/material.dart';
-
+import '/images/images.dart';
 import '/styles/app_color.dart';
 import '/utils/size_config.dart';
-import '/Screen/Signup/phone.dart';
+import '/Screen/SignScreen/New_Password.dart';
 
-class NameSignUp extends StatefulWidget {
-  static const routename = '/NameScreen';
-  const NameSignUp({Key? key}) : super(key: key);
+class Password extends StatefulWidget {
+  const Password({Key? key}) : super(key: key);
 
   @override
-  _NameSignUpState createState() => _NameSignUpState();
+  _PasswordState createState() => _PasswordState();
 }
 
-class _NameSignUpState extends State<NameSignUp> {
+class _PasswordState extends State<Password> {
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +54,7 @@ class _NameSignUpState extends State<NameSignUp> {
                     ),
                     const Spacer(),
                     const Text(
-                      "Enter Your Name",
+                      "Setup Password",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w800,
@@ -62,39 +63,63 @@ class _NameSignUpState extends State<NameSignUp> {
                     Expanded(child: Container()),
                   ],
                 ),
-                _myTextWidget("Please enter your first and last name ",
-                    0xFFAAAAAA, FontWeight.w400, 20, 30, 0, 0),
+                _myTextWidget(
+                    "Please create a secure password including the following criteria below ",
+                    0xFFAAAAAA,
+                    FontWeight.w400,
+                    20,
+                    30,
+                    0,
+                    0),
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.03,
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(
+                  obscureText: _isObscure,
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            _isObscure = !_isObscure;
+                          },
+                        );
+                      },
+                    ),
                     border: UnderlineInputBorder(),
-                    labelText: 'Your Name',
+                    labelText: 'Password',
                   ),
                 ),
+                _myTextWidget("Must be at least 8 characters", 0xFFAAAAAA,
+                    FontWeight.w400, 15, 15, 0, 0),
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.15,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Phone.routename);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.screenHeight * 0.03,
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Continue",
-                        style: TextStyle(fontSize: 19, color: Colors.white),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (ctx) => Welcome()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: SizeConfig.screenHeight * 0.03,
                       ),
-                    ),
-                    width: SizeConfig.screenWidth * 0.90,
-                    height: SizeConfig.screenHeight * 0.08,
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(74, 167, 253, 1),
-                      borderRadius: BorderRadius.circular(20),
+                      child: const Center(
+                        child: Text(
+                          "Continue",
+                          style: TextStyle(fontSize: 19, color: Colors.white),
+                        ),
+                      ),
+                      width: SizeConfig.screenWidth * 0.90,
+                      height: SizeConfig.screenHeight * 0.08,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(74, 167, 253, 1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
                 ),

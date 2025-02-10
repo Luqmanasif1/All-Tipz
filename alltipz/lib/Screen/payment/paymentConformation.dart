@@ -1,18 +1,18 @@
+import 'package:alltipz/Screen/payment/paymentSuccess.dart';
+
+import 'package:alltipz/styles/app_color.dart';
+import 'package:alltipz/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-import '/styles/app_color.dart';
-import '/utils/size_config.dart';
-import '/Screen/Signup/phone.dart';
-
-class NameSignUp extends StatefulWidget {
-  static const routename = '/NameScreen';
-  const NameSignUp({Key? key}) : super(key: key);
+class PaymentConformation extends StatefulWidget {
+  const PaymentConformation({Key? key}) : super(key: key);
 
   @override
-  _NameSignUpState createState() => _NameSignUpState();
+  _PaymentConformationState createState() => _PaymentConformationState();
 }
 
-class _NameSignUpState extends State<NameSignUp> {
+class _PaymentConformationState extends State<PaymentConformation> {
+  bool _isObscure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +53,7 @@ class _NameSignUpState extends State<NameSignUp> {
                     ),
                     const Spacer(),
                     const Text(
-                      "Enter Your Name",
+                      "Confirm Password",
                       style: TextStyle(
                         fontSize: 25,
                         fontWeight: FontWeight.w800,
@@ -62,39 +62,63 @@ class _NameSignUpState extends State<NameSignUp> {
                     Expanded(child: Container()),
                   ],
                 ),
-                _myTextWidget("Please enter your first and last name ",
-                    0xFFAAAAAA, FontWeight.w400, 20, 30, 0, 0),
+                _myTextWidget(
+                    "Please input your password before continuing payment ",
+                    0xFFAAAAAA,
+                    FontWeight.w400,
+                    20,
+                    30,
+                    0,
+                    0),
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.03,
                 ),
                 TextFormField(
-                  decoration: const InputDecoration(
+                  obscureText: _isObscure,
+                  decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _isObscure ? Icons.visibility_off : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {
+                            _isObscure = !_isObscure;
+                          },
+                        );
+                      },
+                    ),
                     border: UnderlineInputBorder(),
-                    labelText: 'Your Name',
+                    labelText: 'Password',
                   ),
                 ),
+                _myTextWidget("Must be at least 8 characters", 0xFFAAAAAA,
+                    FontWeight.w400, 15, 15, 0, 0),
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.15,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).pushNamed(Phone.routename);
-                  },
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      top: SizeConfig.screenHeight * 0.03,
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Continue",
-                        style: TextStyle(fontSize: 19, color: Colors.white),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (ctx) => PaymentSucces()));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: SizeConfig.screenHeight * 0.03,
                       ),
-                    ),
-                    width: SizeConfig.screenWidth * 0.90,
-                    height: SizeConfig.screenHeight * 0.08,
-                    decoration: BoxDecoration(
-                      color: const Color.fromRGBO(74, 167, 253, 1),
-                      borderRadius: BorderRadius.circular(20),
+                      child: const Center(
+                        child: Text(
+                          "Confirm Password",
+                          style: TextStyle(fontSize: 19, color: Colors.white),
+                        ),
+                      ),
+                      width: SizeConfig.screenWidth * 0.90,
+                      height: SizeConfig.screenHeight * 0.08,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(74, 167, 253, 1),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
                   ),
                 ),

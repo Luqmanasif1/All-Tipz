@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '/images/images.dart';
 import '/styles/app_color.dart';
 import '/utils/size_config.dart';
+import '/Screen/SignScreen/login.dart';
 
 class NewPassword extends StatefulWidget {
   static const routename = '/N-Pass';
@@ -43,7 +44,9 @@ class _NewPasswordState extends State<NewPassword> {
                         color: ColorsX.white,
                       ),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         icon: const Icon(
                           Icons.arrow_back_ios,
                         ),
@@ -102,7 +105,9 @@ class _NewPasswordState extends State<NewPassword> {
                   height: SizeConfig.screenHeight * 0.02,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(LogIn.routename);
+                  },
                   child: Center(
                     child: Container(
                       margin: EdgeInsets.only(

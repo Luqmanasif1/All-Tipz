@@ -15,6 +15,7 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   bool _isObscure = false;
+  final input = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,6 +23,8 @@ class _SignUpState extends State<SignUp> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
+            height: SizeConfig.screenHeight,
+            width: SizeConfig.screenWidth,
             padding: EdgeInsets.only(
               left: SizeConfig.screenWidth * 0.06,
               right: SizeConfig.screenWidth * 0.06,
@@ -41,6 +44,7 @@ class _SignUpState extends State<SignUp> {
                   height: SizeConfig.screenHeight * 0.05,
                 ),
                 TextFormField(
+                  controller: input,
                   decoration: const InputDecoration(
                     border: UnderlineInputBorder(),
                     labelText: 'Your email',
@@ -120,15 +124,19 @@ class _SignUpState extends State<SignUp> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.08,
                 ),
-                Row(
-                  children: [
-                    _NavigateButton(fb, "Facebook"),
-                    Expanded(child: Container()),
-                    _NavigateButton(google, "Google"),
-                  ],
+                Container(
+                  height: SizeConfig.screenHeight / 9,
+                  width: SizeConfig.screenWidth,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _NavigateButton(fb, "Facebook"),
+                      _NavigateButton(google, "Google"),
+                    ],
+                  ),
                 ),
                 const SizedBox(
-                  height: 70,
+                  height: 10,
                 )
               ],
             ),
@@ -164,8 +172,8 @@ Widget _myTextWidget(
 
 Widget _NavigateButton(String img, String label) {
   return Container(
-    height: 60,
-    width: 160,
+    height: SizeConfig.screenHeight / 12,
+    width: SizeConfig.screenWidth / 2.5,
     padding: EdgeInsets.only(left: 11),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
@@ -187,13 +195,13 @@ Widget _NavigateButton(String img, String label) {
             height: 80,
           ),
         ),
-        const SizedBox(
-          width: 14,
+        SizedBox(
+          width: SizeConfig.screenWidth * 0.02,
         ),
         Text(
           label,
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 15,
             fontWeight: FontWeight.bold,
           ),
         )

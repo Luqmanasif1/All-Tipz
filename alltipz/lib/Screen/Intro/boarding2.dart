@@ -3,6 +3,7 @@ import '/images/images.dart';
 import '/styles/app_color.dart';
 import '/utils/size_config.dart';
 import '/Screen/Intro/boarding3.dart';
+import '/Screen/SignScreen/option_screen.dart';
 
 class BoardingTwo extends StatelessWidget {
   const BoardingTwo({Key? key}) : super(key: key);
@@ -17,15 +18,20 @@ class BoardingTwo extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.10),
-                child: const Align(
+                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.08),
+                child: Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Skip    ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Option.routename);
+                    },
+                    child: const Text(
+                      "Skip    ",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -51,8 +57,8 @@ class BoardingTwo extends StatelessWidget {
                     topRight: Radius.circular(40.0),
                   ),
                 ),
-                width: SizeConfig.screenHeight,
-                height: SizeConfig.screenWidth,
+                width: SizeConfig.screenWidth * 100,
+                height: SizeConfig.screenHeight / 3,
                 child: Column(
                   children: [
                     _myTextWidget("Safest Platform", 0xFF000000,

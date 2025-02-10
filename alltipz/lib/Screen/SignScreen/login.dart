@@ -5,6 +5,8 @@ import '/utils/size_config.dart';
 import '/Screen/SignScreen/Rest_Password.dart';
 import '/Screen/Signup/signup_screen.dart';
 
+import '/Screen/home/home.dart';
+
 class LogIn extends StatefulWidget {
   static const routename = "/LogIn";
   const LogIn({Key? key}) : super(key: key);
@@ -33,7 +35,7 @@ class _LogInState extends State<LogIn> {
                   child: Image.asset(
                     splashscreen,
                     color: ColorsX.AppBluecolor,
-                    height: 100,
+                    height: 80,
                   ),
                 ),
                 SizedBox(
@@ -87,7 +89,9 @@ class _LogInState extends State<LogIn> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).pushNamed(Home.routename);
+                  },
                   child: Container(
                     margin: EdgeInsets.only(
                       top: SizeConfig.screenHeight * 0.03,
@@ -151,15 +155,19 @@ class _LogInState extends State<LogIn> {
                 SizedBox(
                   height: SizeConfig.screenHeight * 0.05,
                 ),
-                Row(
-                  children: [
-                    _NavigateButton(fb, "Facebook"),
-                    Expanded(child: Container()),
-                    _NavigateButton(google, "Google"),
-                  ],
+                Container(
+                  height: SizeConfig.screenHeight / 9,
+                  width: SizeConfig.screenWidth,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _NavigateButton(fb, "Facebook"),
+                      _NavigateButton(google, "Google"),
+                    ],
+                  ),
                 ),
                 const SizedBox(
-                  height: 70,
+                  height: 10,
                 )
               ],
             ),
@@ -172,8 +180,8 @@ class _LogInState extends State<LogIn> {
 
 Widget _NavigateButton(String img, String label) {
   return Container(
-    height: 60,
-    width: 160,
+    height: SizeConfig.screenHeight / 12,
+    width: SizeConfig.screenWidth / 2.5,
     padding: EdgeInsets.only(left: 11),
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
@@ -195,13 +203,13 @@ Widget _NavigateButton(String img, String label) {
             height: 80,
           ),
         ),
-        const SizedBox(
-          width: 14,
+        SizedBox(
+          width: SizeConfig.screenWidth * 0.02,
         ),
         Text(
           label,
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 15,
             fontWeight: FontWeight.bold,
           ),
         )

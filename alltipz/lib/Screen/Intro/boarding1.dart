@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/images/images.dart';
 import '/styles/app_color.dart';
 import '/utils/size_config.dart';
+import '/Screen/SignScreen/option_screen.dart';
 
 class Boardingone extends StatelessWidget {
   const Boardingone({Key? key}) : super(key: key);
@@ -17,15 +18,20 @@ class Boardingone extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.10),
-                child: const Align(
+                padding: EdgeInsets.only(top: SizeConfig.screenHeight * 0.08),
+                child: Align(
                   alignment: Alignment.centerRight,
-                  child: Text(
-                    "Skip    ",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(Option.routename);
+                    },
+                    child: const Text(
+                      "Skip    ",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
@@ -51,8 +57,8 @@ class Boardingone extends StatelessWidget {
                     topRight: Radius.circular(40.0),
                   ),
                 ),
-                width: SizeConfig.screenHeight,
-                height: SizeConfig.screenWidth,
+                width: SizeConfig.screenWidth * 100,
+                height: SizeConfig.screenHeight / 3,
                 child: Column(
                   children: [
                     _myTextWidget("Fastest Payment", 0xFF000000,

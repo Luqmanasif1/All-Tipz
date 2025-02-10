@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _navigateTologin() async {
     await Future.delayed(
       const Duration(
-        milliseconds: 3000,
+        milliseconds: 3500,
       ),
       () {
         Navigator.pushReplacement(
